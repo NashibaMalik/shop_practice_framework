@@ -31,10 +31,8 @@ public class ProductTest {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // Open Website
         driver.get("https://www.saucedemo.com/");
 
-        // Login
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
 
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
@@ -42,10 +40,7 @@ public class ProductTest {
         driver.findElement(By.id("login-button")).click();
     }
 
-    // ---------------------------------------------------
 
-    // Testcase 1
-    // Verify product dashboard loads with at least one product
 
     @Test
     public void verifyProductDashboardLoads() {
@@ -54,11 +49,6 @@ public class ProductTest {
 
         Assert.assertTrue(products.size() > 0);
     }
-
-    // ---------------------------------------------------
-
-    // Testcase 2
-    // Verify each product card shows name and price
 
     @Test
     public void verifyProductNameAndPrice() {
@@ -77,11 +67,6 @@ public class ProductTest {
         }
     }
 
-    // ---------------------------------------------------
-
-    // Testcase 3
-    // Add one product to cart and verify badge count
-
     @Test
     public void verifyAddProductToCart() {
 
@@ -92,10 +77,6 @@ public class ProductTest {
         Assert.assertEquals(cartBadge.getText(), "1");
     }
 
-    // ---------------------------------------------------
-
-    // Testcase 4
-    // Add multiple products without leaving page
 
     @Test
     public void verifyMultipleProductsAddToCart() {
@@ -108,18 +89,15 @@ public class ProductTest {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.className("inventory_list")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("inventory_list")));
 
-        List<WebElement> addButtons = driver.findElements(
-                By.xpath("//button[contains(text(),'Add to cart')]"));
+        List<WebElement> addButtons = driver.findElements(By.xpath("//button[contains(text(),'Add to cart')]"));
 
         addButtons.get(0).click();
         addButtons.get(1).click();
         addButtons.get(2).click();
 
-        String cartCount = driver.findElement(
-                By.className("shopping_cart_badge")).getText();
+        String cartCount = driver.findElement(By.className("shopping_cart_badge")).getText();
 
         Assert.assertEquals(cartCount, "3");
     }

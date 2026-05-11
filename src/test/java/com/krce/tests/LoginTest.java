@@ -18,8 +18,6 @@ import java.time.Duration;
 public class LoginTest extends BaseTest {
 
     ConfigReader config = new ConfigReader();
-
-    // Test Case 1
     @Test
 
     public void verifyValidLogin() {
@@ -36,8 +34,6 @@ public class LoginTest extends BaseTest {
 
         Assert.assertTrue(dp.isDashboardDisplayed());
     }
-
-    // Test Case 2
     @Test
 
     public void verifyInvalidLogin() {
@@ -56,8 +52,6 @@ public class LoginTest extends BaseTest {
 
         Assert.assertTrue(error.contains("Incorrect"));
     }
-
-    // Test Case 3
     @Test
 
     public void verifyLogout() {
@@ -76,8 +70,6 @@ public class LoginTest extends BaseTest {
 
         Assert.assertTrue(dp.isLoginPageDisplayed());
     }
-
-    // Test Case 4
     @Test
     public void verifyEmptyLogin() {
 
@@ -87,10 +79,7 @@ public class LoginTest extends BaseTest {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        WebElement errorMessage = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//*[contains(text(),'Your username is invalid!')]")
-                ));
+        WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Your username is invalid!')]")));
 
         Assert.assertTrue(errorMessage.isDisplayed());
     }
