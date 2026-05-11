@@ -12,25 +12,35 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    By email =
-            By.id("userEmail");
+    By email = By.id("userEmail");
 
-    By password =
-            By.id("userPassword");
+    By password = By.id("userPassword");
 
-    By loginButton =
-            By.id("login");
+    By loginButton = By.id("login");
 
-    public void login(String user,
-                      String pass) {
+    By errorMessage =
+            By.cssSelector("[class*='flyInOut']");
 
-        driver.findElement(email)
-                .sendKeys(user);
+    public void login(String user, String pass) {
 
-        driver.findElement(password)
-                .sendKeys(pass);
+        driver.findElement(email).clear();
 
-        driver.findElement(loginButton)
-                .click();
+        driver.findElement(password).clear();
+
+        driver.findElement(email).sendKeys(user);
+
+        driver.findElement(password).sendKeys(pass);
+
+        driver.findElement(loginButton).click();
+    }
+
+    public void clickLoginButton() {
+
+        driver.findElement(loginButton).click();
+    }
+
+    public String getErrorMessage() {
+
+        return driver.findElement(errorMessage).getText();
     }
 }
