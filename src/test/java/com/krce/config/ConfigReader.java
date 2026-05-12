@@ -11,9 +11,7 @@ public class ConfigReader {
 
         try {
 
-            FileInputStream fis =
-                    new FileInputStream(
-                            "src/main/resources/config.properties");
+            FileInputStream fis = new FileInputStream("src/main/resources/config.properties");
 
             prop = new Properties();
 
@@ -51,3 +49,5 @@ public class ConfigReader {
                 prop.getProperty("timeout"));
     }
 }
+
+

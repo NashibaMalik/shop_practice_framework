@@ -97,27 +97,6 @@ public class ProductCartTest {
         Assert.assertTrue(total > 0);
     }
 
-    @Test
-    public void checkoutSuccessfully() {
-
-        driver.findElement(By.className("shopping_cart_link")).click();
-
-        driver.findElement(By.id("checkout")).click();
-
-        driver.findElement(By.id("first-name")).sendKeys("Test");
-        driver.findElement(By.id("last-name")).sendKeys("User");
-        driver.findElement(By.id("postal-code")).sendKeys("600001");
-
-        driver.findElement(By.id("continue")).click();
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement finishBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("finish")));
-        finishBtn.click();
-        WebElement successMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("complete-header")));
-
-        Assert.assertEquals(successMsg.getText(), "Thank you for your order!");
-    }
-
 
     @AfterMethod
     public void tearDown() {

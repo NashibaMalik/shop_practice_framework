@@ -81,12 +81,6 @@ public class ProductTest {
     @Test
     public void verifyMultipleProductsAddToCart() {
 
-        driver.get("https://www.saucedemo.com/");
-
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.id("login-button")).click();
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("inventory_list")));

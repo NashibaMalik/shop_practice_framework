@@ -1,6 +1,7 @@
 package com.krce.base;
 
 import com.krce.config.ConfigReader;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.openqa.selenium.WebDriver;
@@ -19,12 +20,16 @@ public class BaseTest {
 
     public void setup() {
 
+        // Setup Chrome Driver
         WebDriverManager.chromedriver().setup();
 
+        // Launch Browser
         driver = new ChromeDriver();
 
+        // Maximize Window
         driver.manage().window().maximize();
 
+        // Open URL from config.properties
         driver.get(config.getUrl());
     }
 
@@ -32,6 +37,7 @@ public class BaseTest {
 
     public void tearDown() {
 
+        // Close Browser
         driver.quit();
     }
 }
